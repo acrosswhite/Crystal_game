@@ -6,44 +6,48 @@ var lossScore = 0;
 
 $(document).ready(function(){
 
-var function runGame (){
-numberToGuess = Math.floor(Math.random()*101)+19;
+	$("#crystal-blue").attr("data-crystalvalue", Math.floor(Math.random()*12)+1);
+	$("#crystal-red").attr("data-crystalvalue", Math.floor(Math.random()*12)+1);
+	$("#crystal-green").attr("data-crystalvalue", Math.floor(Math.random()*12)+1);
+	$("#crystal-pink").attr("data-crystalvalue", Math.floor(Math.random()*12)+1);
 
-$("#number-to-guess").text(function(){
-	return "Number to Guess: " + numberToGuess;
-});
+	$(".crystal").on("click", function(){
+		var crystalValue = $(this).attr("data-crystalvalue");
+		crystalValue = parseInt(crystalValue);
+		userCount += crystalValue;
 
-$("#crystal-blue").attr("data-crystalvalue", Math.floor(Math.random()*12)+1);
-$("#crystal-red").attr("data-crystalvalue", Math.floor(Math.random()*12)+1);
-$("#crystal-green").attr("data-crystalvalue", Math.floor(Math.random()*12)+1);
-$("#crystal-pink").attr("data-crystalvalue", Math.floor(Math.random()*12)+1);
+		alert("New Score: " + userCount);
+	});
 
-$(".crystal").on("click", function(){
-	var crystalValue = $(this).attr("data-crystalvalue");
-	crystalValue = parseInt(crystalValue);
-	userCount += crystalValue;
+	function runGame (){
+		numberToGuess = Math.floor(Math.random()*101)+19;
 
-	alert("New Score: " + userCount);
-};
+		$("#number-to-guess").text(function(){
+			return "Number to Guess: " + numberToGuess;
+		});
 
-	if (userCount === numberToGuess){
-		alert("you won!");
-		winScore ++;
-		$("#wins").text("Wins:" + winScore);
-		numberToGuess = 0;
-		userCount = 0;
-		runGame ();
-	}
-
-	else if (userCount >= numberToGuess){
-		confirm("Oh no! You lost! Try again");
-		lossScore ++;
-		$("#losses").text("Losses: " + lossScore);
-		if (confirm === true){
+		if (userCount === numberToGuess){
+			alert("you won!");
+			winScore ++;
+			$("#wins").text("Wins:" + winScore);
 			numberToGuess = 0;
 			userCount = 0;
 			runGame ();
 		};
-	};
+
+		if (userCount >= numberToGuess){
+			confirm("Oh no! You lost! Try again");
+			lossScore ++;
+			$("#losses").text("Losses: " + lossScore);
+			if (confirm === true){
+				numberToGuess = 0;
+				userCount = 0;
+				runGame ();
+			};
+		};
+	});
 runGame ();
 });
+
+//create a reset instead of calling runGame inside the runGame function
+
