@@ -64,5 +64,3 @@ runGame ();
 
 });
 
-//create a reset instead of calling runGame inside the runGame function
-
