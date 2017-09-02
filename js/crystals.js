@@ -53,6 +53,8 @@ function playGame () {
 
 $(document).ready(function(){
 
+	alert("Rules of the game: Click the colored crystals until you match the Number to Guess!")
+
 	function runGame (){
 
 	resetGame ();

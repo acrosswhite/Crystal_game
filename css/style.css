@@ -1,5 +1,5 @@
 h1 {
-	color: cornflowerblue;
+	color: #090d8b;
 	text-align: center;
 }
 
@@ -11,7 +11,12 @@ img {
 	margin-left: 100px;
 }
 
+.score-panel {
+	border-color: #090d8b;
+	color: #090d8b;
+}
+
 #number-to-guess{
 	text-align: center;
-	color: darkgreen;
+	color: #1b271e;
 }
